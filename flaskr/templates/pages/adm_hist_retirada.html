@@ -1,0 +1,211 @@
+{% extends "components/base.html" %}
+{% block title %}Histórico de Retirada de Eqp.{% endblock %}
+{% set labels = 'show_labels' %}
+{% set box_title = 'Histórico de Retirada de Equipamentos' %}
+{% set graphs = 'show_graphs' %}
+{% block head %}
+{{super()}}
+<style>
+    .container #box #graphs {
+        grid-template-rows: 1fr;
+        grid-template-areas: 'graph_zero graph_one';
+    }
+
+    .container #box #graphs #graph-0 {
+        grid-area: graph_zero;
+    }
+
+    .container #box #graphs #graph-1 {
+        grid-area: graph_one;
+    }
+</style>
+{% endblock %}
+{% block content %}
+{% include "components/container.html" %}
+{% endblock %}
+{% block scripts %}
+<script>
+    charts({{graph | tojson}})
+
+    const data = [{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '27-9-2024',
+        'Data de Devolução': '28-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável': 'Giselle',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'Marcos',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '21-9-2024',
+        'Data de Devolução': '23-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável': 'Bia',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '17-9-2024',
+        'Data de Devolução': '27-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    },{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '27-9-2024',
+        'Data de Devolução': '28-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável': 'Giselle',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'Marcos',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '21-9-2024',
+        'Data de Devolução': '23-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável': 'Bia',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '17-9-2024',
+        'Data de Devolução': '27-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    },{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '27-9-2024',
+        'Data de Devolução': '28-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável': 'Giselle',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'Marcos',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '21-9-2024',
+        'Data de Devolução': '23-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável': 'Bia',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '17-9-2024',
+        'Data de Devolução': '27-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    },{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '27-9-2024',
+        'Data de Devolução': '28-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável': 'Giselle',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'Marcos',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '21-9-2024',
+        'Data de Devolução': '23-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável': 'Bia',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '17-9-2024',
+        'Data de Devolução': '27-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    },{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável': 'João',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '27-9-2024',
+        'Data de Devolução': '28-9-2024'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável': 'Giselle',
+        'ID do Responsável': '123456789',
+        'Data de Retirada': '24-9-2024',
+        'Data de Devolução': '25-9-2024'
+    },];
+
+    const table = new Table(data, 1, {option: false, trash: false, edit: false, formAction: 'editarEqp', title: ''});
+    document.querySelector('.table-button').style.display = 'none'
+</script>
+{% endblock %}

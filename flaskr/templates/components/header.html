@@ -1,0 +1,27 @@
+<header>
+    <div class="collapse-toggle">
+        <i class="fa-light fa-xmark" onclick="collapseNav()"></i>
+    </div>
+    {% set name = session['name'] %}
+    {% set email = session['email'] %}
+    <div class="account-toggle" onclick="accountToggle()">
+        <span>{{name}}</span>
+        <i class="fa-light fa-angle-down"></i>
+    </div>
+    <div class="box-account-config">
+            <button onclick="popup(
+                [{label: 'Nome', type: 'text'},{label: 'Email', type: 'email'}, {label: 'Senha', type: 'password'},
+                 {label: 'Confirmar Senha', type: 'password'}],['{{name}}','{{email}}'], ['Atualizar'],
+                 'Minha Conta',
+                 'auth', '',
+                 true); document.querySelectorAll(`input[type='password']`).forEach(e => {e.required = false})
+            ">
+                <i class="fa-light fa-user"></i>
+                <span>Minha Conta</span>
+            </button>
+            <button onclick="redirect('/')">
+                <i class="fa-light fa-right-from-bracket"></i>
+                <span>Sair</span>
+            </button>
+        </div>
+</header>

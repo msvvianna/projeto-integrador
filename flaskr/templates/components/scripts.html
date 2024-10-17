@@ -1,0 +1,19 @@
+<script>
+    const locale = window.location.href.split('/')[3]
+    if (locale !== '') {
+        document.getElementById(locale).style.background = 'var(--pale-lavender)'
+        document.getElementById(locale).style.color = 'var(--dark-slate)'
+    }
+
+    let redirect = (url) => {
+        window.location.href = url
+    }
+</script>
+<script src="{{ url_for('static', filename='assets/js/collapseNav.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/accountToggle.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/form.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/popup.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/popupDetail.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/table.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/charts.js')}}"></script>
+<script src="{{ url_for('static', filename='assets/js/apexcharts.min.js')}}"></script>

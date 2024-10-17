@@ -1,0 +1,473 @@
+{% extends "components/base.html" %}
+{% block title %}Equipamentos em Manutenção{% endblock %}
+{% set labels = 'show_labels' %}
+{% set box_title = 'Equipamentos em Manutenção' %}
+{% set graphs = 'show_graphs' %}
+{% block head %}
+{{super()}}
+<script>
+    const labels = [{label: 'Serial', type: 'text'},
+        {label: 'WI-FI Ip Adress', type: 'text'},
+        {label: 'Modelo', type: 'select', options: ['HAND HELD', 'ZEBRA TC21', 'HONEYWELL CT60', 'HONEYWELL EDA61K']},
+        {label: 'Responsável pela Ocorrencia', type: 'text'},
+        {label: 'ID do Responsável pela Ocorrencia', type: 'text'},
+        {label: 'Data de Entrada na Manutenção', type: 'date'},
+        {label: 'Observação', type: 'textarea'},]
+</script>
+<style>
+    .container #box #graphs {
+        grid-template-rows: 1fr;
+        grid-template-areas: 'graph_zero graph_one';
+    }
+
+    .container #box #graphs #graph-0 {
+        grid-area: graph_zero;
+    }
+
+    .container #box #graphs #graph-1 {
+        grid-area: graph_one;
+    }
+
+    form .form-inputs {
+        width: 740px;
+    }
+
+    form .form-inputs div:last-child textarea {
+        width: 100%;
+    }
+</style>
+{% endblock %}
+{% block content %}
+{% include "components/container.html" %}
+{% endblock %}
+{% block scripts %}
+<script>
+    charts({{graph | tojson}})
+
+    const data1 = [{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    },];
+
+    const data2 = [{
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        'Data de Saida da Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '21-09-2024',
+        'Data de Saida da Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '17-09-2024',
+        'Data de Saida da Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        'Data de Saida da Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '21-09-2024',
+        'Data de Saida da Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '17-09-2024',
+        'Data de Saida da Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        'Data de Saida da Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '21-09-2024',
+        'Data de Saida da Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '17-09-2024',
+        'Data de Saida da Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        'Data de Saida da Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'Marcos',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '21-09-2024',
+        'Data de Saida da Manutenção': '23-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL CT60',
+        'Responsável pela Ocorrencia': 'Bia',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '17-09-2024',
+        'Data de Saida da Manutenção': '27-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HAND HELT',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'ZEBRA TC21',
+        'Responsável pela Ocorrencia': 'João',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '27-09-2024',
+        'Data de Saida da Manutenção': '28-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    }, {
+        serial: '1234567afg',
+        'WI-FI Ip Adress': '192.168.1.1',
+        modelo: 'HONEYWELL EDA61K',
+        'Responsável pela Ocorrencia': 'Giselle',
+        'ID do Responsável pela Ocorrencia': '123456789',
+        'Data de Entrada na Manutenção': '24-09-2024',
+        'Data de Saida da Manutenção': '25-09-2024',
+        detail: 'Esse texto é simbolico, apenas para testar, já que estamos aqui, vai uma curiosidade sobre carros, sabia que o Pagani Zonda Cinque, o nome Cinque veio pelo fato de serem construidos apenas 5 exemplares, sendo considerado um dos carros mais exclusivos e caros (15 milhoẽs de dolares) de todos os tempos!'
+    },];
+
+    const tables = [
+        {
+            data: data1,
+            options: {
+                option: true,
+                trash: true,
+                edit: true,
+                formAction: 'editarEqp',
+                title: 'Equipamentos em manutenção'
+            }
+        },
+        {
+            data: data2,
+            options: {
+                option: true,
+                trash: false,
+                edit: false,
+                formAction: null,
+                title: 'Hist. de Equipamentos em manutenção'
+            }
+        }
+    ];
+
+    tables.forEach(({data, options}, index) => {
+        new Table(data, 1, options);
+        if (index === 1) {
+            document.querySelectorAll('.table-button')[1].style.display = 'none';
+        }
+    });
+
+    const tableButton = document.querySelector('.table-button');
+    tableButton.textContent = 'Cadastrar';
+    tableButton.setAttribute('onclick',
+        `popup(${JSON.stringify(labels).replace(/"/g, "'")},
+        '',
+        ['Cadastrar'],
+        'Cadastrar Ocorrencia',
+        'registerEqp','', true); `
+    );
+
+    document.querySelectorAll('.trash').forEach(element => {
+        element.querySelector('.fa-trash').classList.replace('fa-trash', 'fa-check');
+        element.style.background = 'var(--cerulean-blue)'
+        element.title = 'Finalizar ocorrencia'
+    });
+
+</script>
+{% endblock %}

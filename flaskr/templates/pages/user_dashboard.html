@@ -1,0 +1,29 @@
+{% extends "components/base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% set page = 'user' %}
+{% block head %}
+{{super()}}
+<style>
+    .container #box #graphs {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-template-areas: 'graph_zero graph_zero';
+    }
+
+    .container #box #graphs #graph-0 {
+        grid-area: graph_zero;
+    }
+</style>
+{% endblock %}
+{% set labels = 'show_labels' %}
+{% set graphs = 'show_graphs' %}
+{% set box_title = 'Dashboard' %}
+{% block content %}
+{{super()}}
+{% include 'components/container.html' %}
+{% endblock %}
+{% block scripts %}
+<script>
+    charts({{graph | tojson}})
+</script>
+{% endblock %}

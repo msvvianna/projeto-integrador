@@ -1,0 +1,57 @@
+{% extends "components/base.html" %}
+{% block title %}Usuários{% endblock %}
+{% set labels = 'not_show_labels' %}
+{% set box_title = 'Usuários' %}
+{% block head %}
+{{super()}}
+<script>
+    const labels = [{label: 'Nome', type: 'name'}, {label: 'ID', type: 'text'}, {label: 'Email', type: 'email'}]
+</script>
+{% endblock %}
+{% block content %}
+{% include "components/container.html" %}
+{% endblock %}
+{% block scripts %}
+<script>
+    const data = [{nome: 'João', ID: '123456789', email: 'email@email.com'}, {nome: 'Giselle', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'Marcos',
+        ID: '123456789', email: 'email@email.com',
+    }, {nome: 'Bia', ID: '123456789', email: 'email@email.com'}, {nome: 'João', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'João',
+        ID: '123456789', email: 'email@email.com'
+    }, {nome: 'Giselle', ID: '123456789', email: 'email@email.com'}, {nome: 'Marcos', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'Bia',
+        ID: '123456789', email: 'email@email.com'
+    }, {nome: 'João', ID: '123456789', email: 'email@email.com'}, {nome: 'João', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'Giselle',
+        ID: '123456789', email: 'email@email.com'
+    }, {nome: 'Marcos', ID: '123456789', email: 'email@email.com'}, {nome: 'Bia', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'João',
+        ID: '123456789', email: 'email@email.com'
+    }, {nome: 'João', ID: '123456789', email: 'email@email.com'}, {nome: 'Giselle', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'Marcos',
+        ID: '123456789', email: 'email@email.com'
+    }, {nome: 'Bia', ID: '123456789', email: 'email@email.com'}, {nome: 'João', ID: '123456789', email: 'email@email.com'}, {
+        nome: 'João',
+        ID: '123456789', email: 'email@email.com'
+    }, {nome: 'Giselle', ID: '123456789', email: 'email@email.com'}];
+
+    new Table(data, 1, {
+        option: false,
+        trash: true,
+        edit: true,
+        formAction: null,
+        title: ''
+    });
+
+    const tableButton = document.querySelector('.table-button');
+    tableButton.textContent = 'Cadastrar';
+    tableButton.setAttribute('onclick',
+        `popup(${JSON.stringify(labels).replace(/"/g, "'")},
+        '',
+        ['Cadastrar'],
+        'Cadastrar Usuarios',
+        'registerEqp','', true); `
+    );
+</script>
+{% endblock %}
